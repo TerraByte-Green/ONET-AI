@@ -10,6 +10,7 @@ connects directly with a connection string; the schema is not exposed through th
 - `data/` — load-ready CSVs, one per table (committed)
 - `supabase/migrations/` — schema (tables, keys, indexes) and `v_*` spreadsheet-shaped views
 - `scripts/load.py` — truncates and reloads every `onet` table from `data/` in one transaction
+- `.github/workflows/load-data.yml` — runs the loader on push to `main`
 
 ## Setup
 ```bash
@@ -17,21 +18,31 @@ pip install -r requirements.txt
 cp .env.example .env          # fill in DATABASE_URL (Supabase session pooler, port 5432)
 ```
 
-## Deploy
-1. Apply the schema (either way):
-   ```bash
-   supabase db push --db-url "$DATABASE_URL"        # Supabase CLI (run `supabase init` once first)
-   # or
-   for f in supabase/migrations/*.sql; do psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f "$f"; done
-   ```
-2. Load the data: `python scripts/load.py`
+## Deploy (GitHub → Supabase)
+Pushing to `main` deploys everything:
+- **Schema:** the Supabase GitHub integration applies new files in `supabase/migrations/`.
+- **Data:** `.github/workflows/load-data.yml` checks `data/` against `onet-data/`, waits for the
+  migrations to land, then runs `scripts/load.py`. It also has a manual **Run workflow** button.
+
+One-time setup:
+1. Run `supabase init` in the repo and commit `supabase/config.toml`.
+2. Supabase dashboard → Project Settings → Integrations → GitHub: connect this repo,
+   Supabase directory `.`, production branch `main`, enable **Deploy to production**.
+3. GitHub repo → Settings → Secrets and variables → Actions → add `DATABASE_URL`
+   (Supabase **session pooler** string, port 5432).
+4. Push to `main`.
+
+Apply migrations only through the integration. Running them by hand skips Supabase's migration
+history and breaks later deploys.
+
+Manual load from your own machine: put `DATABASE_URL` in `.env`, then run `python scripts/load.py`.
 
 ## Upgrading to a new O*NET release
 1. Replace `onet-data/` with the new release's Excel files.
 2. `python scripts/build_csv.py`. It fails if a column or file appears that isn't mapped,
    or if a name column disagrees with its reference table.
 3. If the structure changed, add a new migration under `supabase/migrations/`.
-4. `python scripts/load.py` replaces the loaded data; `onet.release_info` records the release.
+4. Commit and push; CI reloads the data. `onet.release_info` records the release.
 
 ## Schema notes
 - Reference tables: `occupation_data`, `content_model_reference` (every element, with

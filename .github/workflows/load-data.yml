@@ -1,0 +1,70 @@
+# Reloads the O*NET data into Supabase when the data, the loader, or the schema
+# changes on main. The Supabase GitHub integration applies supabase/migrations/
+# on the same push; the loader waits for that before loading.
+#
+# Requires the repository secret DATABASE_URL (Supabase session pooler string,
+# port 5432 — GitHub runners are IPv4-only, so the direct connection won't work).
+
+name: Load O*NET data
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/**"
+      - "onet-data/**"
+      - "scripts/**"
+      - "supabase/migrations/**"
+      - "requirements.txt"
+      - ".github/workflows/load-data.yml"
+  workflow_dispatch: # manual "Run workflow" button for a full reload
+
+concurrency:
+  group: onet-load
+  cancel-in-progress: false
+
+jobs:
+  verify-csvs:
+    name: Check CSVs match the Excel source
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Rebuild CSVs and compare with the committed ones
+        run: |
+          if [ ! -d onet-data ]; then
+            echo "onet-data/ not in the repo; skipping check."
+            exit 0
+          fi
+          python scripts/build_csv.py
+          if [ -n "$(git status --porcelain data)" ]; then
+            git status --short data
+            echo "::error::data/ is out of date with onet-data/. Run 'python scripts/build_csv.py' and commit data/."
+            exit 1
+          fi
+
+  load:
+    name: Load into Supabase
+    needs: verify-csvs
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Load data
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          if [ -z "$DATABASE_URL" ]; then
+            echo "::error::Repository secret DATABASE_URL is not set."
+            exit 1
+          fi
+          python scripts/load.py --wait-for-migrations 900

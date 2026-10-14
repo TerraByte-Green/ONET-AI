@@ -8,3 +8,6 @@
 - 2026-10-14: numeric (unbounded) for values to avoid silent rounding; MM/YYYY → date (1st of month); Y/N → boolean.
 - 2026-10-14: Tables with nullable Category use identity PK + UNIQUE NULLS NOT DISTINCT (requires PG15+).
 - 2026-10-14: Redundant name columns are verified against reference tables in build_csv.py before being dropped.
+- 2026-10-14: Schema deployed by the Supabase GitHub integration; data by a GitHub Action (load.py) since the integration doesn't seed production.
+- 2026-10-14: load.py --wait-for-migrations polls supabase_migrations.schema_migrations so CI loads only after the integration applies the newest migration.
+- 2026-10-14: CI rebuilds CSVs from onet-data/ and fails if data/ differs; .gitattributes forces LF so the check works from Windows.
