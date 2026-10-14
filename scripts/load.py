@@ -22,6 +22,15 @@ from dotenv import load_dotenv
 SCHEMA = "onet"
 
 
+def connect(url, **kwargs):
+    """Connect without letting connection-string errors echo the password into logs."""
+    try:
+        return psycopg.connect(url, **kwargs)
+    except psycopg.ProgrammingError:
+        sys.exit("DATABASE_URL could not be parsed. If the password contains special "
+                 "characters (% & @ / : # ?), URL-encode them or use a letters-and-digits password.")
+
+
 def wait_for_migrations(url, migrations_dir, timeout):
     """Block until Supabase has applied the newest migration in the repo.
 
@@ -30,7 +39,7 @@ def wait_for_migrations(url, migrations_dir, timeout):
     """
     latest = max(p.name.split("_", 1)[0] for p in migrations_dir.glob("*.sql"))
     deadline = time.monotonic() + timeout
-    with psycopg.connect(url, autocommit=True) as conn:
+    with connect(url, autocommit=True) as conn:
         while True:
             try:
                 applied = conn.execute(
@@ -71,7 +80,7 @@ def main():
     expected = {t["table"]: t["rows"] for t in manifest["tables"]}
     print(f"Loading O*NET {manifest['release']} ({len(tables)} tables)")
 
-    with psycopg.connect(url) as conn:
+    with connect(url) as conn:
         with conn.cursor() as cur:
             qualified = ", ".join(f"{SCHEMA}.{t}" for t in tables + ["release_info"])
             cur.execute(f"truncate {qualified} restart identity")
