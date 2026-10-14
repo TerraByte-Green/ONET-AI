@@ -1,0 +1,282 @@
+element_id,scale_id,category,category_description
+4.C.1.a.2.c,CXP,1,Never
+4.C.1.a.2.c,CXP,2,Once a year or more but not every month
+4.C.1.a.2.c,CXP,3,Once a month or more but not every week
+4.C.1.a.2.c,CXP,4,Once a week or more but not every day
+4.C.1.a.2.c,CXP,5,Every day
+4.C.1.a.2.f,CXP,1,Never
+4.C.1.a.2.f,CXP,2,Once a year or more but not every month
+4.C.1.a.2.f,CXP,3,Once a month or more but not every week
+4.C.1.a.2.f,CXP,4,Once a week or more but not every day
+4.C.1.a.2.f,CXP,5,Every day
+4.C.1.a.2.h,CXP,1,Never
+4.C.1.a.2.h,CXP,2,Once a year or more but not every month
+4.C.1.a.2.h,CXP,3,Once a month or more but not every week
+4.C.1.a.2.h,CXP,4,Once a week or more but not every day
+4.C.1.a.2.h,CXP,5,Every day
+4.C.1.a.2.j,CXP,1,Never
+4.C.1.a.2.j,CXP,2,Once a year or more but not every month
+4.C.1.a.2.j,CXP,3,Once a month or more but not every week
+4.C.1.a.2.j,CXP,4,Once a week or more but not every day
+4.C.1.a.2.j,CXP,5,Every day
+4.C.1.a.2.l,CXP,1,Never
+4.C.1.a.2.l,CXP,2,Once a year or more but not every month
+4.C.1.a.2.l,CXP,3,Once a month or more but not every week
+4.C.1.a.2.l,CXP,4,Once a week or more but not every day
+4.C.1.a.2.l,CXP,5,Every day
+4.C.1.a.4,CXP,1,No contact with others
+4.C.1.a.4,CXP,2,Occasional contact with others
+4.C.1.a.4,CXP,3,Contact with others about half the time
+4.C.1.a.4,CXP,4,Contact with others most of the time
+4.C.1.a.4,CXP,5,Constant contact with others
+4.C.1.b.1.e,CXP,1,Not important at all
+4.C.1.b.1.e,CXP,2,Fairly important
+4.C.1.b.1.e,CXP,3,Important
+4.C.1.b.1.e,CXP,4,Very important
+4.C.1.b.1.e,CXP,5,Extremely important
+4.C.1.b.1.f,CXP,1,Not important at all
+4.C.1.b.1.f,CXP,2,Fairly important
+4.C.1.b.1.f,CXP,3,Important
+4.C.1.b.1.f,CXP,4,Very important
+4.C.1.b.1.f,CXP,5,Extremely important
+4.C.1.b.1.g,CXP,1,Not important at all
+4.C.1.b.1.g,CXP,2,Fairly important
+4.C.1.b.1.g,CXP,3,Important
+4.C.1.b.1.g,CXP,4,Very important
+4.C.1.b.1.g,CXP,5,Extremely important
+4.C.1.c.1,CXP,1,No responsibility
+4.C.1.c.1,CXP,2,Limited responsibility
+4.C.1.c.1,CXP,3,Moderate responsibility
+4.C.1.c.1,CXP,4,High responsibility
+4.C.1.c.1,CXP,5,Very high responsibility
+4.C.1.c.2,CXP,1,No responsibility
+4.C.1.c.2,CXP,2,Limited responsibility
+4.C.1.c.2,CXP,3,Moderate responsibility
+4.C.1.c.2,CXP,4,High responsibility
+4.C.1.c.2,CXP,5,Very high responsibility
+4.C.1.d.1,CXP,1,Never
+4.C.1.d.1,CXP,2,Once a year or more but not every month
+4.C.1.d.1,CXP,3,Once a month or more but not every week
+4.C.1.d.1,CXP,4,Once a week or more but not every day
+4.C.1.d.1,CXP,5,Every day
+4.C.1.d.2,CXP,1,Never
+4.C.1.d.2,CXP,2,Once a year or more but not every month
+4.C.1.d.2,CXP,3,Once a month or more but not every week
+4.C.1.d.2,CXP,4,Once a week or more but not every day
+4.C.1.d.2,CXP,5,Every day
+4.C.1.d.3,CXP,1,Never
+4.C.1.d.3,CXP,2,Once a year or more but not every month
+4.C.1.d.3,CXP,3,Once a month or more but not every week
+4.C.1.d.3,CXP,4,Once a week or more but not every day
+4.C.1.d.3,CXP,5,Every day
+4.C.2.a.1.a,CXP,1,Never
+4.C.2.a.1.a,CXP,2,Once a year or more but not every month
+4.C.2.a.1.a,CXP,3,Once a month or more but not every week
+4.C.2.a.1.a,CXP,4,Once a week or more but not every day
+4.C.2.a.1.a,CXP,5,Every day
+4.C.2.a.1.b,CXP,1,Never
+4.C.2.a.1.b,CXP,2,Once a year or more but not every month
+4.C.2.a.1.b,CXP,3,Once a month or more but not every week
+4.C.2.a.1.b,CXP,4,Once a week or more but not every day
+4.C.2.a.1.b,CXP,5,Every day
+4.C.2.a.1.c,CXP,1,Never
+4.C.2.a.1.c,CXP,2,Once a year or more but not every month
+4.C.2.a.1.c,CXP,3,Once a month or more but not every week
+4.C.2.a.1.c,CXP,4,Once a week or more but not every day
+4.C.2.a.1.c,CXP,5,Every day
+4.C.2.a.1.d,CXP,1,Never
+4.C.2.a.1.d,CXP,2,Once a year or more but not every month
+4.C.2.a.1.d,CXP,3,Once a month or more but not every week
+4.C.2.a.1.d,CXP,4,Once a week or more but not every day
+4.C.2.a.1.d,CXP,5,Every day
+4.C.2.a.1.e,CXP,1,Never
+4.C.2.a.1.e,CXP,2,Once a year or more but not every month
+4.C.2.a.1.e,CXP,3,Once a month or more but not every week
+4.C.2.a.1.e,CXP,4,Once a week or more but not every day
+4.C.2.a.1.e,CXP,5,Every day
+4.C.2.a.1.f,CXP,1,Never
+4.C.2.a.1.f,CXP,2,Once a year or more but not every month
+4.C.2.a.1.f,CXP,3,Once a month or more but not every week
+4.C.2.a.1.f,CXP,4,Once a week or more but not every day
+4.C.2.a.1.f,CXP,5,Every day
+4.C.2.a.3,CXP,1,I don't work near other people (beyond 100 ft.)
+4.C.2.a.3,CXP,2,"I work with others but not closely (e.g., private office)"
+4.C.2.a.3,CXP,3,"Slightly close (e.g., shared office)"
+4.C.2.a.3,CXP,4,Moderately close (at arm's length)
+4.C.2.a.3,CXP,5,Very close (near touching)
+4.C.2.b.1.a,CXP,1,Never
+4.C.2.b.1.a,CXP,2,Once a year or more but not every month
+4.C.2.b.1.a,CXP,3,Once a month or more but not every week
+4.C.2.b.1.a,CXP,4,Once a week or more but not every day
+4.C.2.b.1.a,CXP,5,Every day
+4.C.2.b.1.b,CXP,1,Never
+4.C.2.b.1.b,CXP,2,Once a year or more but not every month
+4.C.2.b.1.b,CXP,3,Once a month or more but not every week
+4.C.2.b.1.b,CXP,4,Once a week or more but not every day
+4.C.2.b.1.b,CXP,5,Every day
+4.C.2.b.1.c,CXP,1,Never
+4.C.2.b.1.c,CXP,2,Once a year or more but not every month
+4.C.2.b.1.c,CXP,3,Once a month or more but not every week
+4.C.2.b.1.c,CXP,4,Once a week or more but not every day
+4.C.2.b.1.c,CXP,5,Every day
+4.C.2.b.1.d,CXP,1,Never
+4.C.2.b.1.d,CXP,2,Once a year or more but not every month
+4.C.2.b.1.d,CXP,3,Once a month or more but not every week
+4.C.2.b.1.d,CXP,4,Once a week or more but not every day
+4.C.2.b.1.d,CXP,5,Every day
+4.C.2.b.1.e,CXP,1,Never
+4.C.2.b.1.e,CXP,2,Once a year or more but not every month
+4.C.2.b.1.e,CXP,3,Once a month or more but not every week
+4.C.2.b.1.e,CXP,4,Once a week or more but not every day
+4.C.2.b.1.e,CXP,5,Every day
+4.C.2.b.1.f,CXP,1,Never
+4.C.2.b.1.f,CXP,2,Once a year or more but not every month
+4.C.2.b.1.f,CXP,3,Once a month or more but not every week
+4.C.2.b.1.f,CXP,4,Once a week or more but not every day
+4.C.2.b.1.f,CXP,5,Every day
+4.C.2.c.1.a,CXP,1,Never
+4.C.2.c.1.a,CXP,2,Once a year or more but not every month
+4.C.2.c.1.a,CXP,3,Once a month or more but not every week
+4.C.2.c.1.a,CXP,4,Once a week or more but not every day
+4.C.2.c.1.a,CXP,5,Every day
+4.C.2.c.1.b,CXP,1,Never
+4.C.2.c.1.b,CXP,2,Once a year or more but not every month
+4.C.2.c.1.b,CXP,3,Once a month or more but not every week
+4.C.2.c.1.b,CXP,4,Once a week or more but not every day
+4.C.2.c.1.b,CXP,5,Every day
+4.C.2.c.1.c,CXP,1,Never
+4.C.2.c.1.c,CXP,2,Once a year or more but not every month
+4.C.2.c.1.c,CXP,3,Once a month or more but not every week
+4.C.2.c.1.c,CXP,4,Once a week or more but not every day
+4.C.2.c.1.c,CXP,5,Every day
+4.C.2.c.1.d,CXP,1,Never
+4.C.2.c.1.d,CXP,2,Once a year or more but not every month
+4.C.2.c.1.d,CXP,3,Once a month or more but not every week
+4.C.2.c.1.d,CXP,4,Once a week or more but not every day
+4.C.2.c.1.d,CXP,5,Every day
+4.C.2.c.1.e,CXP,1,Never
+4.C.2.c.1.e,CXP,2,Once a year or more but not every month
+4.C.2.c.1.e,CXP,3,Once a month or more but not every week
+4.C.2.c.1.e,CXP,4,Once a week or more but not every day
+4.C.2.c.1.e,CXP,5,Every day
+4.C.2.c.1.f,CXP,1,Never
+4.C.2.c.1.f,CXP,2,Once a year or more but not every month
+4.C.2.c.1.f,CXP,3,Once a month or more but not every week
+4.C.2.c.1.f,CXP,4,Once a week or more but not every day
+4.C.2.c.1.f,CXP,5,Every day
+4.C.2.d.1.a,CXP,1,Never
+4.C.2.d.1.a,CXP,2,Less than half the time
+4.C.2.d.1.a,CXP,3,About half the time
+4.C.2.d.1.a,CXP,4,More than half the time
+4.C.2.d.1.a,CXP,5,Continually or almost continually
+4.C.2.d.1.b,CXP,1,Never
+4.C.2.d.1.b,CXP,2,Less than half the time
+4.C.2.d.1.b,CXP,3,About half the time
+4.C.2.d.1.b,CXP,4,More than half the time
+4.C.2.d.1.b,CXP,5,Continually or almost continually
+4.C.2.d.1.c,CXP,1,Never
+4.C.2.d.1.c,CXP,2,Less than half the time
+4.C.2.d.1.c,CXP,3,About half the time
+4.C.2.d.1.c,CXP,4,More than half the time
+4.C.2.d.1.c,CXP,5,Continually or almost continually
+4.C.2.d.1.d,CXP,1,Never
+4.C.2.d.1.d,CXP,2,Less than half the time
+4.C.2.d.1.d,CXP,3,About half the time
+4.C.2.d.1.d,CXP,4,More than half the time
+4.C.2.d.1.d,CXP,5,Continually or almost continually
+4.C.2.d.1.e,CXP,1,Never
+4.C.2.d.1.e,CXP,2,Less than half the time
+4.C.2.d.1.e,CXP,3,About half the time
+4.C.2.d.1.e,CXP,4,More than half the time
+4.C.2.d.1.e,CXP,5,Continually or almost continually
+4.C.2.d.1.f,CXP,1,Never
+4.C.2.d.1.f,CXP,2,Less than half the time
+4.C.2.d.1.f,CXP,3,About half the time
+4.C.2.d.1.f,CXP,4,More than half the time
+4.C.2.d.1.f,CXP,5,Continually or almost continually
+4.C.2.d.1.g,CXP,1,Never
+4.C.2.d.1.g,CXP,2,Less than half the time
+4.C.2.d.1.g,CXP,3,About half the time
+4.C.2.d.1.g,CXP,4,More than half the time
+4.C.2.d.1.g,CXP,5,Continually or almost continually
+4.C.2.d.1.h,CXP,1,Never
+4.C.2.d.1.h,CXP,2,Less than half the time
+4.C.2.d.1.h,CXP,3,About half the time
+4.C.2.d.1.h,CXP,4,More than half the time
+4.C.2.d.1.h,CXP,5,Continually or almost continually
+4.C.2.d.1.i,CXP,1,Never
+4.C.2.d.1.i,CXP,2,Less than half the time
+4.C.2.d.1.i,CXP,3,About half the time
+4.C.2.d.1.i,CXP,4,More than half the time
+4.C.2.d.1.i,CXP,5,Continually or almost continually
+4.C.2.e.1.d,CXP,1,Never
+4.C.2.e.1.d,CXP,2,Once a year or more but not every month
+4.C.2.e.1.d,CXP,3,Once a month or more but not every week
+4.C.2.e.1.d,CXP,4,Once a week or more but not every day
+4.C.2.e.1.d,CXP,5,Every day
+4.C.2.e.1.e,CXP,1,Never
+4.C.2.e.1.e,CXP,2,Once a year or more but not every month
+4.C.2.e.1.e,CXP,3,Once a month or more but not every week
+4.C.2.e.1.e,CXP,4,Once a week or more but not every day
+4.C.2.e.1.e,CXP,5,Every day
+4.C.3.a.1,CXP,1,Not serious at all
+4.C.3.a.1,CXP,2,Fairly serious
+4.C.3.a.1,CXP,3,Serious
+4.C.3.a.1,CXP,4,Very serious
+4.C.3.a.1,CXP,5,Extremely serious
+4.C.3.a.2.a,CXP,1,No results
+4.C.3.a.2.a,CXP,2,Minor results
+4.C.3.a.2.a,CXP,3,Moderate results
+4.C.3.a.2.a,CXP,4,Important results
+4.C.3.a.2.a,CXP,5,Very important results
+4.C.3.a.2.b,CXP,1,Never
+4.C.3.a.2.b,CXP,2,Once a year or more but not every month
+4.C.3.a.2.b,CXP,3,Once a month or more but not every week
+4.C.3.a.2.b,CXP,4,Once a week or more but not every day
+4.C.3.a.2.b,CXP,5,Every day
+4.C.3.a.4,CXP,1,No freedom
+4.C.3.a.4,CXP,2,Very little freedom
+4.C.3.a.4,CXP,3,Limited freedom
+4.C.3.a.4,CXP,4,Some freedom
+4.C.3.a.4,CXP,5,A lot of freedom
+4.C.3.b.2,CXP,1,Not at all automated
+4.C.3.b.2,CXP,2,Slightly automated
+4.C.3.b.2,CXP,3,Moderately automated
+4.C.3.b.2,CXP,4,Highly automated
+4.C.3.b.2,CXP,5,Completely automated
+4.C.3.b.4,CXP,1,Not important at all
+4.C.3.b.4,CXP,2,Fairly important
+4.C.3.b.4,CXP,3,Important
+4.C.3.b.4,CXP,4,Very important
+4.C.3.b.4,CXP,5,Extremely important
+4.C.3.b.7,CXP,1,Not important at all
+4.C.3.b.7,CXP,2,Fairly important
+4.C.3.b.7,CXP,3,Important
+4.C.3.b.7,CXP,4,Very important
+4.C.3.b.7,CXP,5,Extremely important
+4.C.3.b.8,CXP,1,No freedom
+4.C.3.b.8,CXP,2,Very little freedom
+4.C.3.b.8,CXP,3,Limited freedom
+4.C.3.b.8,CXP,4,Some freedom
+4.C.3.b.8,CXP,5,A lot of freedom
+4.C.3.c.1,CXP,1,Not at all competitive
+4.C.3.c.1,CXP,2,Slightly competitive
+4.C.3.c.1,CXP,3,Moderately competitive
+4.C.3.c.1,CXP,4,Highly competitive
+4.C.3.c.1,CXP,5,Extremely competitive
+4.C.3.d.1,CXP,1,Never
+4.C.3.d.1,CXP,2,Once a year or more but not every month
+4.C.3.d.1,CXP,3,Once a month or more but not every week
+4.C.3.d.1,CXP,4,Once a week or more but not every day
+4.C.3.d.1,CXP,5,Every day
+4.C.3.d.3,CXP,1,Not important at all
+4.C.3.d.3,CXP,2,Fairly important
+4.C.3.d.3,CXP,3,Important
+4.C.3.d.3,CXP,4,Very important
+4.C.3.d.3,CXP,5,Extremely important
+4.C.3.d.4,CTP,1,"Regular (established routine, set schedule)"
+4.C.3.d.4,CTP,2,"Irregular (changes with weather conditions, production demands, or contract duration)"
+4.C.3.d.4,CTP,3,Seasonal (only during certain times of the year)
+4.C.3.d.8,CTP,1,Less than 40 hours
+4.C.3.d.8,CTP,2,40 hours
+4.C.3.d.8,CTP,3,More than 40 hours

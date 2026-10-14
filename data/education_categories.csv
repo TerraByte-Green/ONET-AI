@@ -1,0 +1,25 @@
+element_id,scale_id,category,category_description
+2.D.1,RL,1,Less than a High School Diploma
+2.D.1,RL,2,High School Diploma or the equivalent (such as a GED)
+2.D.1,RL,3,Post-Secondary Certificate
+2.D.1,RL,4,Some College Courses
+2.D.1,RL,5,Associate's Degree or other 2-year degree
+2.D.1,RL,6,Bachelor's Degree
+2.D.1,RL,7,Post-Baccalaureate Certificate
+2.D.1,RL,8,Master's Degree
+2.D.1,RL,9,Post-Master's Certificate
+2.D.1,RL,10,"First Professional Degree - awarded for completion of a program that: requires at least 2 years of college work before entrance into the program, includes a total of at least 6 academic years of work to complete, and provides all remaining academic requirements to begin practice in a profession."
+2.D.1,RL,11,Doctoral Degree
+2.D.1,RL,12,Post-Doctoral Training
+2.D.1,RQ,1,Less than a High School Diploma
+2.D.1,RQ,2,High School Diploma or the equivalent (such as a GED)
+2.D.1,RQ,3,Post-Secondary Certificate
+2.D.1,RQ,4,Some College Courses
+2.D.1,RQ,5,Associate's Degree or other 2-year degree
+2.D.1,RQ,6,Bachelor's Degree
+2.D.1,RQ,7,Post-Baccalaureate Certificate
+2.D.1,RQ,8,Master's Degree
+2.D.1,RQ,9,Post-Master's Certificate
+2.D.1,RQ,10,Doctor's Degree - Professional Practice (such as a J.D. for Law or an M.D. for Medicine)
+2.D.1,RQ,11,Doctor's Degree - Research/Scholarship (such as a Ph.D.)
+2.D.1,RQ,12,Post-Doctoral Training

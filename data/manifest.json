@@ -1,0 +1,156 @@
+{
+  "release": "31.0",
+  "release_name": "August 2026 Release",
+  "source_url": "https://www.onetcenter.org/dictionary/31.0/excel/",
+  "license": "CC BY 4.0 (https://www.onetcenter.org/license_db.html)",
+  "tables": [
+    {
+      "table": "occupation_data",
+      "rows": 1016
+    },
+    {
+      "table": "content_model_reference",
+      "rows": 3006
+    },
+    {
+      "table": "scales_reference",
+      "rows": 33
+    },
+    {
+      "table": "job_zone_reference",
+      "rows": 4
+    },
+    {
+      "table": "task_categories",
+      "rows": 7
+    },
+    {
+      "table": "education_categories",
+      "rows": 24
+    },
+    {
+      "table": "training_experience_categories",
+      "rows": 29
+    },
+    {
+      "table": "work_context_categories",
+      "rows": 281
+    },
+    {
+      "table": "level_scale_anchors",
+      "rows": 483
+    },
+    {
+      "table": "survey_booklet_locations",
+      "rows": 211
+    },
+    {
+      "table": "iwa_reference",
+      "rows": 332
+    },
+    {
+      "table": "dwa_reference",
+      "rows": 2087
+    },
+    {
+      "table": "element_crosswalk",
+      "rows": 1470
+    },
+    {
+      "table": "career_interest_type_keywords",
+      "rows": 75
+    },
+    {
+      "table": "interests_illustrative_activities",
+      "rows": 188
+    },
+    {
+      "table": "interests_illustrative_occupations",
+      "rows": 186
+    },
+    {
+      "table": "abilities",
+      "rows": 94640
+    },
+    {
+      "table": "essential_skills",
+      "rows": 18200
+    },
+    {
+      "table": "transferable_skills",
+      "rows": 45500
+    },
+    {
+      "table": "knowledge",
+      "rows": 60060
+    },
+    {
+      "table": "work_activities",
+      "rows": 74702
+    },
+    {
+      "table": "work_context",
+      "rows": 305389
+    },
+    {
+      "table": "education",
+      "rows": 11495
+    },
+    {
+      "table": "training_experience",
+      "rows": 26812
+    },
+    {
+      "table": "career_interest_types",
+      "rows": 8307
+    },
+    {
+      "table": "specific_interest_areas",
+      "rows": 73062
+    },
+    {
+      "table": "work_styles",
+      "rows": 37422
+    },
+    {
+      "table": "task_statements",
+      "rows": 18838
+    },
+    {
+      "table": "task_ratings",
+      "rows": 165780
+    },
+    {
+      "table": "tasks_to_dwas",
+      "rows": 24087
+    },
+    {
+      "table": "emerging_tasks",
+      "rows": 338
+    },
+    {
+      "table": "job_zones",
+      "rows": 923
+    },
+    {
+      "table": "job_titles",
+      "rows": 54269
+    },
+    {
+      "table": "sample_of_reported_titles",
+      "rows": 8189
+    },
+    {
+      "table": "related_occupations",
+      "rows": 18460
+    },
+    {
+      "table": "software_skills",
+      "rows": 31821
+    },
+    {
+      "table": "occupation_level_metadata",
+      "rows": 32280
+    }
+  ]
+}

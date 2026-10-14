@@ -1,0 +1,10 @@
+# Decisions
+- 2026-10-14: Supabase CLI migrations for schema + Python loader (COPY) for data; seed.sql too large for 1.1M rows.
+- 2026-10-14: Normalized schema (IDs only in data tables) + v_* views rebuilding the spreadsheet columns.
+- 2026-10-14: Dedicated `onet` schema, revoked from anon/authenticated; app connects via DATABASE_URL, no Data API.
+- 2026-10-14: One release at a time; load truncates and reloads; onet.release_info records the release.
+- 2026-10-14: Commit converted CSVs (73MB, max 23MB/file) in data/; xlsx kept in onet-data/ as source.
+- 2026-10-14: Table names follow O*NET file names (snake_case); 9 "X to Y" mapping files merged into element_crosswalk.
+- 2026-10-14: numeric (unbounded) for values to avoid silent rounding; MM/YYYY → date (1st of month); Y/N → boolean.
+- 2026-10-14: Tables with nullable Category use identity PK + UNIQUE NULLS NOT DISTINCT (requires PG15+).
+- 2026-10-14: Redundant name columns are verified against reference tables in build_csv.py before being dropped.
