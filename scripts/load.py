@@ -3,10 +3,9 @@
 Usage:
     python scripts/load.py [--data data] [--wait-for-migrations SECONDS]
 
-Reads DATABASE_URL from the environment or from .env. If DATABASE_PASSWORD is
-set, it is used as the password as-is (no URL-encoding needed) and DATABASE_URL
-can leave the password out. The schema must already
-exist (apply supabase/migrations/ first). Everything runs in one transaction:
+Reads DATABASE_URL from the environment or from .env. The password in it may
+contain any characters, encoded or not. Alternatively, leave the password out of
+the URL and set DATABASE_PASSWORD. The schema must already exist (apply supabase/migrations/ first). Everything runs in one transaction:
 if any table fails to load or a row count doesn't match the manifest, nothing
 changes.
 """
@@ -14,6 +13,7 @@ changes.
 import argparse
 import json
 import os
+import re
 import sys
 import time
 from pathlib import Path
@@ -24,16 +24,34 @@ from dotenv import load_dotenv
 SCHEMA = "onet"
 
 
+def split_raw_password(url):
+    """Pull an unencoded password out of postgresql://user:PASSWORD@host/...
+
+    The password is everything between the first ':' after the user and the
+    last '@', so it may contain any characters, including '@', '%', '/' and '#'.
+    """
+    m = re.fullmatch(r"(postgres(?:ql)?://[^:@/]*):(.*)@([^@]*)", url, re.S)
+    if not m:
+        return url, None
+    return f"{m[1]}@{m[3]}", m[2]
+
+
 def connect(url, **kwargs):
     """Connect without letting connection-string errors echo the password into logs."""
     password = os.environ.get("DATABASE_PASSWORD")
+    try:
+        psycopg.conninfo.conninfo_to_dict(url)
+    except psycopg.ProgrammingError:
+        # Not a valid URL as written, most likely an unencoded password.
+        url, raw = split_raw_password(url)
+        password = password or raw
     if password:
         kwargs["password"] = password
     try:
         return psycopg.connect(url, **kwargs)
     except psycopg.ProgrammingError:
-        sys.exit("DATABASE_URL could not be parsed. Put the password in DATABASE_PASSWORD "
-                 "instead and leave it out of the URL.")
+        sys.exit("DATABASE_URL could not be parsed. Expected "
+                 "postgresql://user:password@host:port/database")
 
 
 def wait_for_migrations(url, migrations_dir, timeout):

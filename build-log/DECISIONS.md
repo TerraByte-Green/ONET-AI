@@ -12,3 +12,4 @@
 - 2026-10-14: load.py --wait-for-migrations polls supabase_migrations.schema_migrations so CI loads only after the integration applies the newest migration.
 - 2026-10-14: CI rebuilds CSVs from onet-data/ and fails if data/ differs; .gitattributes forces LF so the check works from Windows.
 - 2026-10-14: Password passed separately via DATABASE_PASSWORD (raw, no URL-encoding); DATABASE_URL omits it.
+- 2026-10-14: Unencoded passwords accepted in DATABASE_URL via lenient fallback parse; supersedes requiring DATABASE_PASSWORD.

@@ -2,11 +2,10 @@
 # changes on main. The Supabase GitHub integration applies supabase/migrations/
 # on the same push; the loader waits for that before loading.
 #
-# Requires repository secrets:
-#   DATABASE_URL      Supabase session pooler string without the password, e.g.
-#                     postgresql://postgres.<ref>@aws-0-<region>.pooler.supabase.com:5432/postgres
-#                     (port 5432 — GitHub runners are IPv4-only, so the direct connection won't work)
-#   DATABASE_PASSWORD the database password exactly as set in Supabase (any characters)
+# Requires the repository secret DATABASE_URL: the Supabase session pooler string
+# (port 5432 — GitHub runners are IPv4-only, so the direct connection won't work).
+# The password in it can be pasted as-is, special characters included.
+# Optional secret DATABASE_PASSWORD overrides the password in the URL.
 
 name: Load O*NET data
 

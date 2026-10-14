@@ -15,7 +15,7 @@ connects directly with a connection string; the schema is not exposed through th
 ## Setup
 ```bash
 pip install -r requirements.txt
-cp .env.example .env          # fill in DATABASE_URL and DATABASE_PASSWORD
+cp .env.example .env          # fill in DATABASE_URL
 ```
 
 ## Deploy (GitHub → Supabase)
@@ -28,16 +28,15 @@ One-time setup:
 1. Run `supabase init` in the repo and commit `supabase/config.toml`.
 2. Supabase dashboard → Project Settings → Integrations → GitHub: connect this repo,
    Supabase directory `.`, production branch `main`, enable **Deploy to production**.
-3. GitHub repo → Settings → Secrets and variables → Actions → Secrets → add:
-   - `DATABASE_URL`: Supabase **session pooler** string (port 5432) with the password removed,
-     e.g. `postgresql://postgres.<ref>@aws-0-<region>.pooler.supabase.com:5432/postgres`
-   - `DATABASE_PASSWORD`: the database password exactly as set (no encoding needed)
+3. GitHub repo → Settings → Secrets and variables → Actions → Secrets → add `DATABASE_URL`:
+   the Supabase **session pooler** string (port 5432) with your password pasted in as-is.
+   (Optional: `DATABASE_PASSWORD` secret overrides the password in the URL.)
 4. Push to `main`.
 
 Apply migrations only through the integration. Running them by hand skips Supabase's migration
 history and breaks later deploys.
 
-Manual load from your own machine: put `DATABASE_URL` and `DATABASE_PASSWORD` in `.env`, then run `python scripts/load.py`.
+Manual load from your own machine: put `DATABASE_URL` in `.env`, then run `python scripts/load.py`.
 
 ## Upgrading to a new O*NET release
 1. Replace `onet-data/` with the new release's Excel files.
