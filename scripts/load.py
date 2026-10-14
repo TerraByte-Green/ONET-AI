@@ -3,7 +3,9 @@
 Usage:
     python scripts/load.py [--data data] [--wait-for-migrations SECONDS]
 
-Reads DATABASE_URL from the environment or from .env. The schema must already
+Reads DATABASE_URL from the environment or from .env. If DATABASE_PASSWORD is
+set, it is used as the password as-is (no URL-encoding needed) and DATABASE_URL
+can leave the password out. The schema must already
 exist (apply supabase/migrations/ first). Everything runs in one transaction:
 if any table fails to load or a row count doesn't match the manifest, nothing
 changes.
@@ -24,11 +26,14 @@ SCHEMA = "onet"
 
 def connect(url, **kwargs):
     """Connect without letting connection-string errors echo the password into logs."""
+    password = os.environ.get("DATABASE_PASSWORD")
+    if password:
+        kwargs["password"] = password
     try:
         return psycopg.connect(url, **kwargs)
     except psycopg.ProgrammingError:
-        sys.exit("DATABASE_URL could not be parsed. If the password contains special "
-                 "characters (% & @ / : # ?), URL-encode them or use a letters-and-digits password.")
+        sys.exit("DATABASE_URL could not be parsed. Put the password in DATABASE_PASSWORD "
+                 "instead and leave it out of the URL.")
 
 
 def wait_for_migrations(url, migrations_dir, timeout):
