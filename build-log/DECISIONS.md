@@ -13,3 +13,28 @@
 - 2026-10-14: CI rebuilds CSVs from onet-data/ and fails if data/ differs; .gitattributes forces LF so the check works from Windows.
 - 2026-10-14: Password passed separately via DATABASE_PASSWORD (raw, no URL-encoding); DATABASE_URL omits it.
 - 2026-10-14: Unencoded passwords accepted in DATABASE_URL via lenient fallback parse; supersedes requiring DATABASE_PASSWORD.
+- 2026-10-27: GUI is Next.js + TS in web/, server-side pg via DATABASE_URL (onet stays off the Data API).
+- 2026-10-27: Host on Render (free tier) as one Node web service, no Render-specific code, so GCP migration is a container move.
+- 2026-10-27: No login yet; one pass-through middleware.ts so Supabase Auth can be added later in one place.
+- 2026-10-27: GUI built with the frontend-design skill: DESIGN.md tokens approved before pages; screenshot critique passes.
+- 2026-10-27: GUI follows TerraByte Green branding (ref/BRANDGUIDE.md); brand rules override frontend-design defaults; light theme only until a dark theme is approved.
+- 2026-10-27: App name "TerraByte Green Career Explorer"; audience is job seekers/workshop participants plus staff and volunteers.
+- 2026-10-27: Charts stay within the brand's 3-color limit: compare uses small multiples; career interests use one ranked list with the top 3 highlighted.
+- 2026-10-27: ref/ gitignored (brand guide is internal); brand images copied into web/public/brand/.
+- 2026-10-27: Next 16.4 + React 19 + Tailwind v4 + ESLint CLI (next lint removed in 16); scripts call node_modules bins directly because vboxsf needs --no-bin-links.
+- 2026-10-27: Auth hook is web/proxy.ts (Next 16 deprecated middleware.ts → proxy.ts); logic in lib/auth.ts behind AUTH_ENABLED.
+- 2026-10-27: Tailwind default palette disabled (--color-*: initial); only brand tokens exist as utilities. Hex values live only in app/tokens.css, enforced by npm run check:colors.
+- 2026-10-27: pg TLS uses rejectUnauthorized:false unless DATABASE_CA_CERT is set (Supabase CA isn't in Node's store).
+- 2026-10-27: AI widget state "auto" (open ≥1024px, folded below) via CSS data attribute, so there's no layout shift on hydration.
+- 2026-10-27: Mascot served unoptimized at whole-number divisions of 454x638 to keep the pixel art crisp.
+- 2026-10-27: Home job zones come from onet.job_zone_reference (31.0 merges zones 1-2), not a hardcoded 1-5.
+- 2026-10-27: Agent writes code only; the user runs build/lint/tests/screenshots.
+- 2026-10-27: Search ranks code prefix > exact title > title prefix > title contains > alternate title > reported title > technology name; LIKE wildcards escaped.
+- 2026-10-27: "Career interest" filter/summaries use each occupation's strongest interest (highest OI score), not the top 3.
+- 2026-10-27: Data browser allowlist lives in lib/browse.ts (v_* views + reference tables; raw rating tables only via their views); columns come from information_schema and are double-quoted; filter values are bind params.
+- 2026-10-27: Browser filters are case-insensitive "contains" on col::text, in the URL as f.<column>=<text>; the form posts fcol/fq and the page redirects to the canonical f.<column> URL.
+- 2026-10-27: CSV export capped at 100,000 rows (work_context has 305k) so one request can't hold the whole table in memory; the page says when the cap applies.
+- 2026-10-27: Skills shown as O*NET 31.0's two domains, essential and transferable, each with importance + level pins; work context uses CX (1-5), work styles WI (-3 to 3) via new ScorePins scales.
+- 2026-10-27: Charts are CSS bars (BarList), no chart library.
+- 2026-10-27: Compare ranks items by the highest importance any picked job gives them; paired Teal/Purple bars only offered for exactly 2 jobs.
+- 2026-10-27: One .env at the repo root, shared by scripts/load.py and the web app; web/next.config.ts loads it with @next/env loadEnvConfig (already-set vars win), and .env.example stays at root.

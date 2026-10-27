@@ -1,7 +1,8 @@
-Please create the structure of the Postgres db using all of the onet-data
+We now have a starting point for our project.
 
-This postgres db will be hosted on supabase, and will be pulled from a github repo.
+We now want to build a GUI to be able to visualize/query/search/aggregate the ONET data.
+Each page will have a AI widget where you can ask it for ONET data / navigate the web app.
 
-Please prepare the project.
+right now, all we ask is to build the base/foundational GUI.
 
-Stop and ask me questions if there are any gaps that need to be addressed before we start.
+Ask any open questions that you need answers or detail to before finalizing a plan

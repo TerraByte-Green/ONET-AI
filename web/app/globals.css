@@ -1,0 +1,393 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+/* Brand tokens only: drop Tailwind's default palette so off-brand colors can't be used. */
+@theme {
+  --color-*: initial;
+}
+
+@theme inline {
+  --color-white: var(--tbg-white);
+  --color-earth: var(--tbg-earth-brown);
+  --color-sky: var(--tbg-sky-blue);
+  --color-sun: var(--tbg-sunshine-yellow);
+  --color-leaf: var(--tbg-leaf-green);
+  --color-teal: var(--tbg-tech-teal);
+  --color-chip: var(--tbg-chip-green);
+  --color-purple: var(--tbg-deep-purple);
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --font-sans: var(--tbg-font-sans);
+  --font-pixel: var(--tbg-font-pixel);
+
+  --radius-control: var(--tbg-radius-control);
+  --radius-panel: var(--tbg-radius-panel);
+
+  /* 1.25 type scale (web/DESIGN.md Type) */
+  --text-sm: 0.8rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.563rem;
+  --text-2xl: 1.953rem;
+  --text-3xl: 2.441rem;
+  --text-4xl: 3.052rem;
+}
+
+/* ---------- Base ---------- */
+@layer base {
+  html {
+    background: var(--tbg-white);
+    color: var(--tbg-earth-brown);
+    font-family: var(--tbg-font-sans);
+  }
+
+  body {
+    font-size: 1rem;
+    line-height: 1.5;
+    min-width: 320px;
+  }
+
+  h1, h2, h3 {
+    font-weight: 800;
+    line-height: 1.1;
+  }
+  h1 { font-size: var(--text-3xl); }
+  h2 { font-size: var(--text-xl); font-weight: 700; }
+  h3 { font-size: var(--text-lg); font-weight: 700; }
+
+  @media (max-width: 767px) {
+    h1 { font-size: var(--text-2xl); }
+  }
+
+  a {
+    color: var(--tbg-earth-brown);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+  a:hover,
+  a:active {
+    background: linear-gradient(transparent 60%, var(--tbg-sunshine-yellow) 60%);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--tbg-earth-brown);
+    outline-offset: 3px;
+  }
+  .tbg-on-brown :focus-visible {
+    outline-color: var(--tbg-sunshine-yellow);
+  }
+  /* White text on a yellow highlighter fails contrast; on brown, hover turns the link yellow instead. */
+  .tbg-on-brown a {
+    color: var(--tbg-white);
+  }
+  .tbg-on-brown a:hover,
+  .tbg-on-brown a:active {
+    background: none;
+    color: var(--tbg-sunshine-yellow);
+  }
+
+  table {
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::selection {
+    background: var(--tbg-sunshine-yellow);
+    color: var(--tbg-earth-brown);
+  }
+}
+
+/* ---------- Brand motifs (ref/BRANDGUIDE.md section 8) ---------- */
+@layer components {
+  .tbg-prose {
+    max-width: 70ch;
+  }
+
+  /* Three-segment divider under page and section headings. */
+  .tbg-divider {
+    display: flex;
+    gap: 4px;
+    margin-top: 0.75rem;
+  }
+  .tbg-divider span { height: 5px; }
+  .tbg-divider span:nth-child(1) { width: 96px; background: var(--tbg-leaf-green); }
+  .tbg-divider span:nth-child(2) { width: 40px; background: var(--tbg-sunshine-yellow); }
+  .tbg-divider span:nth-child(3) { width: 20px; background: var(--tbg-sky-blue); }
+
+  /* Offset shadow box: once per page at most. */
+  .tbg-shadow-box {
+    background: var(--tbg-sunshine-yellow);
+    border: 4px solid var(--tbg-leaf-green);
+    box-shadow: 10px 10px 0 var(--tbg-earth-brown);
+    color: var(--tbg-earth-brown);
+    padding: 1.5rem 2rem;
+    border-radius: var(--tbg-radius-panel);
+  }
+  @media (max-width: 767px) {
+    .tbg-shadow-box {
+      padding: 1rem;
+      box-shadow: 6px 6px 0 var(--tbg-earth-brown);
+    }
+  }
+
+  .tbg-highlight {
+    background: linear-gradient(transparent 60%, var(--tbg-sunshine-yellow) 60%);
+    padding: 0 0.1em;
+  }
+
+  /* Silkscreen label: NEW, ZONE n, 1/5 only (web/DESIGN.md Type). */
+  .tbg-pixel {
+    font-family: var(--tbg-font-pixel);
+    font-size: 0.8rem;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    display: inline-block;
+    padding: 0.25rem 0.4rem;
+    border: 2px solid var(--tbg-earth-brown);
+    color: var(--tbg-earth-brown);
+    background: var(--tbg-white);
+    white-space: nowrap;
+  }
+
+  /* Buttons: one primary per view. */
+  .tbg-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.5rem 1.25rem;
+    border: 2px solid var(--tbg-earth-brown);
+    border-radius: var(--tbg-radius-control);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--tbg-earth-brown);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .tbg-btn:hover { background-image: none; }
+  .tbg-btn-primary { background: var(--tbg-sunshine-yellow); }
+  .tbg-btn-primary:hover { box-shadow: 3px 3px 0 var(--tbg-earth-brown); }
+  .tbg-btn-secondary { background: var(--tbg-white); }
+  .tbg-btn-secondary:hover { background: var(--tbg-sunshine-yellow); }
+  .tbg-btn:disabled {
+    cursor: not-allowed;
+    border-style: dashed;
+    box-shadow: none;
+    background: var(--tbg-white);
+  }
+
+  .tbg-input {
+    min-height: 44px;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 2px solid var(--tbg-earth-brown);
+    border-radius: var(--tbg-radius-control);
+    background: var(--tbg-white);
+    color: var(--tbg-earth-brown);
+    font-size: 1rem;
+  }
+  .tbg-input::placeholder {
+    color: var(--tbg-earth-brown);
+    opacity: 0.75;
+  }
+
+  /* Score pins: 20 squares, Tech Teal filled, Chip Green unfilled. */
+  .tbg-pins {
+    display: inline-flex;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .tbg-pins span {
+    width: 8px;
+    height: 8px;
+    background: var(--tbg-chip-green);
+  }
+  .tbg-pins span[data-on] {
+    background: var(--tbg-tech-teal);
+  }
+  @media (max-width: 400px) {
+    .tbg-pins { gap: 2px; }
+    .tbg-pins span { width: 6px; height: 6px; }
+  }
+
+  /* Dense data table: sticky header, Earth Brown 1px rules, selected row yellow. */
+  .tbg-table-wrap {
+    max-height: 70vh;
+    overflow: auto;
+    border: 1px solid var(--tbg-earth-brown);
+  }
+  .tbg-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+  .tbg-table th,
+  .tbg-table td {
+    padding: 0.35rem 0.6rem;
+    border-bottom: 1px solid var(--tbg-earth-brown);
+    text-align: left;
+    vertical-align: top;
+  }
+  .tbg-table th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: var(--tbg-white);
+    font-weight: 700;
+    white-space: nowrap;
+    border-bottom-width: 2px;
+  }
+  .tbg-table td {
+    max-width: 32rem;
+  }
+  .tbg-table tbody tr:hover,
+  .tbg-table tbody tr:focus-within {
+    background: var(--tbg-sunshine-yellow);
+  }
+  .tbg-table tbody tr:hover a:hover,
+  .tbg-table tbody tr:focus-within a:hover {
+    background: none;
+  }
+
+  /* Footer tagline: Leaf Green on Earth Brown needs bold 24px+. */
+  .tbg-tagline {
+    font-weight: 800;
+    font-size: 1.563rem;
+    line-height: 1.2;
+  }
+
+  .tbg-mascot {
+    image-rendering: pixelated;
+  }
+
+  /* Wave under the header: thin yellow swoosh fading into green. */
+  .tbg-wave-start { stop-color: var(--tbg-sunshine-yellow); }
+  .tbg-wave-end { stop-color: var(--tbg-leaf-green); }
+}
+
+/* ---------- App shell + AI widget (components/AiWidget.tsx) ----------
+   data-widget: "open" | "closed" | "auto" (open from 1024px up, folded below). */
+@layer components {
+  /* Mobile: full-height bottom sheet, opened from a fixed mascot button. */
+  .tbg-widget {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    background: var(--tbg-white);
+    visibility: hidden;
+    transform: translateY(100%);
+    transition: transform 250ms ease, visibility 0s linear 250ms;
+  }
+  .tbg-shell[data-widget="open"] .tbg-widget {
+    visibility: visible;
+    transform: none;
+    transition: transform 250ms ease;
+  }
+
+  .tbg-widget-toggle {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    border: 2px solid var(--tbg-earth-brown);
+    border-radius: 9999px;
+    background: var(--tbg-sunshine-yellow);
+    color: var(--tbg-earth-brown);
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .tbg-widget-toggle-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .tbg-shell[data-widget="open"] .tbg-widget-toggle {
+    display: none;
+  }
+
+  /* Tablet: the panel slides over the page from the right; folds to an edge tab. */
+  @media (min-width: 768px) {
+    .tbg-widget {
+      inset: 0 0 0 auto;
+      width: var(--tbg-widget-width);
+      border-left: 2px solid var(--tbg-earth-brown);
+      transform: translateX(100%);
+    }
+    .tbg-widget-toggle {
+      top: 50%;
+      right: 0;
+      bottom: auto;
+      flex-direction: column;
+      gap: 0.5rem;
+      width: auto;
+      height: auto;
+      padding: 0.75rem 0.5rem;
+      border-right: 0;
+      border-radius: var(--tbg-radius-panel) 0 0 var(--tbg-radius-panel);
+      transform: translateY(-50%);
+    }
+    .tbg-widget-toggle-label {
+      position: static;
+      width: auto;
+      height: auto;
+      clip-path: none;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+  }
+
+  /* Desktop: the panel is a 360px column beside the page. */
+  @media (min-width: 1024px) {
+    .tbg-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 0;
+      overflow-x: clip;
+      transition: grid-template-columns 250ms ease;
+    }
+    .tbg-shell[data-widget="open"],
+    .tbg-shell[data-widget="auto"] {
+      grid-template-columns: minmax(0, 1fr) var(--tbg-widget-width);
+    }
+    .tbg-widget {
+      position: sticky;
+      inset: auto;
+      top: 0;
+      grid-column: 2;
+      grid-row: 1;
+      align-self: start;
+      height: 100dvh;
+      z-index: auto;
+    }
+    .tbg-shell[data-widget="auto"] .tbg-widget {
+      visibility: visible;
+      transform: none;
+    }
+    .tbg-shell[data-widget="auto"] .tbg-widget-toggle {
+      display: none;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

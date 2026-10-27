@@ -1,0 +1,26 @@
+# Render Blueprint: one Node web service for the Next.js app in web/.
+# No Render-specific code in the app, so moving to GCP is a container move.
+services:
+  - type: web
+    name: tbg-career-explorer
+    runtime: node
+    plan: free
+    rootDir: web
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 24.18.0
+      # Supabase session pooler URL (see .env.example). Set in the Render dashboard.
+      - key: DATABASE_URL
+        sync: false
+      # Optional: raw password if it is left out of DATABASE_URL.
+      - key: DATABASE_PASSWORD
+        sync: false
+      # Optional: Supabase CA certificate (PEM) to verify TLS.
+      - key: DATABASE_CA_CERT
+        sync: false
+      - key: AUTH_ENABLED
+        value: "false"

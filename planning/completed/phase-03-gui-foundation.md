@@ -1,0 +1,12 @@
+# Phase 03: GUI foundation & deploy
+Goal: TerraByte Green Career Explorer app shell on Render, built to web/DESIGN.md, with server-side reads of the onet schema, an AI widget slot and auth-ready middleware.
+Note: S2 to S8 coded 2026-10-27; user confirmed the phase complete the same day.
+## Stories
+- [x] S1: Design direction per frontend-design skill, constrained by `ref/BRANDGUIDE.md`, written to `web/DESIGN.md` | Done when: user approves DESIGN.md
+- [x] S2: Scaffold Next.js + TS app in `web/` (App Router, Tailwind); brand tokens as CSS vars/theme; DM Sans + Silkscreen via next/font; copy logo lockup, site icon and Mascot.png from `ref/` into `web/public/brand/`; favicon from site icon | Done when: `npm run build` and `npm run lint` pass; no hex values outside the token file (`npm run check:colors`) | verify: user
+- [x] S3: Server-only DB layer (`pg` pool, DATABASE_URL + DATABASE_PASSWORD like load.py, SSL) + `/api/health` | Done when: health route returns release_info from live DB; DB code cannot import into client bundles | verify: user (needs web/.env.local)
+- [x] S4: App shell per DESIGN.md: Sky Blue header band with lockup + nav + wave, Earth Brown footer with 3-color tagline and O*NET data credit, AI widget right panel hosted by the mascot (folds to tab; bottom sheet on mobile) | Done when: all nav links render; widget opens/closes on each page; 320px works; keyboard focus visible; reduced motion respected; screenshots at desktop + mobile reviewed | verify: user
+- [x] S5: Brand UI primitives: buttons, inputs, `.tbg-divider`, offset shadow box, highlighter underline, Silkscreen label, score pins (20 pins, Teal/Chip Green, number + screen-reader text) | Done when: a dev-only `/styleguide` page shows each primitive; contrast matches the brand table | verify: user
+- [x] S6: Auth-ready middleware (pass-through now, single hook for Supabase Auth later) | Done when: every page + API route passes through one `proxy.ts` check (Next 16's name for middleware.ts); flag documented in README
+- [x] S7: Home per DESIGN.md: search hero in offset shadow box with mascot, browse by job zone / career interest / explore data, release info + counts | Done when: live release + counts match data/manifest.json (1,016 occupations, 54,269 job titles, 18,838 tasks); search submits to the search route (stub OK until phase 04); screenshot critique done | verify: user
+- [x] S8: Render deploy (`render.yaml`, env vars, Node version pinned) | Done when: Render URL serves home page with live data

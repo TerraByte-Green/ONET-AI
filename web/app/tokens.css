@@ -1,0 +1,24 @@
+/* TerraByte Green brand tokens (ref/BRANDGUIDE.md section 2).
+   The only file in the app allowed to contain hex values; see scripts/check-colors.mjs. */
+:root {
+  /* Core */
+  --tbg-sky-blue: #6DCFF6;
+  --tbg-sunshine-yellow: #F3EC4C;
+  --tbg-leaf-green: #85BF4F;
+  --tbg-earth-brown: #544842;
+  /* Accents */
+  --tbg-chip-green: #7CC576;
+  --tbg-deep-purple: #442E66;
+  --tbg-tech-teal: #0097A7;
+  --tbg-white: #FFFFFF;
+
+  /* Type: next/font sets --font-dm-sans and --font-silkscreen on <html>. */
+  --tbg-font-sans: var(--font-dm-sans), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --tbg-font-pixel: var(--font-silkscreen), "Courier New", monospace;
+
+  /* Radius hierarchy (web/DESIGN.md Components) */
+  --tbg-radius-control: 6px;
+  --tbg-radius-panel: 12px;
+
+  --tbg-widget-width: 360px;
+}

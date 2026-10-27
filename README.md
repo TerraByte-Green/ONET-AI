@@ -45,6 +45,39 @@ Manual load from your own machine: put `DATABASE_URL` in `.env`, then run `pytho
 3. If the structure changed, add a new migration under `supabase/migrations/`.
 4. Commit and push; CI reloads the data. `onet.release_info` records the release.
 
+## Web app (TerraByte Green Career Explorer)
+Next.js (App Router, TypeScript, Tailwind) in `web/`. Design rules: `web/DESIGN.md`.
+Database reads are server-only (`web/lib/db.ts`) and use the same `DATABASE_URL` /
+`DATABASE_PASSWORD` as the loader.
+
+```bash
+cd web
+npm install --no-bin-links     # --no-bin-links needed on VirtualBox shared folders
+npm run dev                    # http://localhost:3000; reads DATABASE_URL from web/.env.local
+npm run build && npm run lint && npm run check:colors
+```
+
+- `/api/health`: returns the loaded O*NET release from `onet.release_info` (503 if the DB is unreachable).
+- `/styleguide`: brand primitives, development only (404 in production).
+- `npm run check:colors`: fails if a hex color appears outside `web/app/tokens.css`.
+
+Environment variables:
+
+| Name | Required | Purpose |
+|---|---|---|
+| `DATABASE_URL` | yes | Supabase session pooler URL (see `.env.example`) |
+| `DATABASE_PASSWORD` | no | Raw password, if left out of the URL |
+| `DATABASE_CA_CERT` | no | Supabase CA certificate (PEM). Without it, TLS is used but the server certificate isn't verified |
+| `AUTH_ENABLED` | no | `true` turns on the auth hook. Default `false` (no login yet) |
+
+**Auth hook:** `web/proxy.ts` (Next 16's name for `middleware.ts`) sends every page and API request
+through `authCheck()` in `web/lib/auth.ts`. It lets everything through today. Supabase Auth gets
+added there and nowhere else, behind `AUTH_ENABLED`.
+
+**Deploy (Render):** `render.yaml` defines one free Node web service rooted at `web/`, with Node
+pinned to 24.18.0. In Render choose **New → Blueprint**, pick this repo, and enter
+`DATABASE_URL` (and `DATABASE_PASSWORD` if used) when prompted. Render checks `/api/health`.
+
 ## Schema notes
 - Reference tables: `occupation_data`, `content_model_reference` (every element, with
   `parent_element_id`), `scales_reference`, `*_categories`, `job_zone_reference`, `iwa_reference`, `dwa_reference`.

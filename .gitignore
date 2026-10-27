@@ -13,6 +13,9 @@ venv/
 supabase/.branches/
 supabase/.temp/
 
+# Internal reference material (brand guide is not for public builds)
+ref/
+
 # OS / editor
 .DS_Store
 Thumbs.db
