@@ -38,3 +38,11 @@
 - 2026-10-27: Charts are CSS bars (BarList), no chart library.
 - 2026-10-27: Compare ranks items by the highest importance any picked job gives them; paired Teal/Purple bars only offered for exactly 2 jobs.
 - 2026-10-27: One .env at the repo root, shared by scripts/load.py and the web app; web/next.config.ts loads it with @next/env loadEnvConfig (already-set vars win), and .env.example stays at root.
+- 2026-11-07: Phase 05 scope chosen by user: core, rating threshold, education/training, work context/styles/tech filters; filter-only search, sort, chips, CSV export.
+- 2026-11-07: No Bright Outlook data in the loaded O*NET tables; use software_skills hot_technology/in_demand and emerging_tasks flags instead.
+- 2026-11-07: All filter state lives in URL params (GET form, no JS required) so results are shareable and the AI widget can deep-link.
+- 2026-11-07: Search filter panel controls use the HTML form attribute (form="search-form") so one GET form holds keyword, sort and filters while the panel sits beside results.
+- 2026-11-07: Education, experience and OJT filters compare the occupation's most common category (highest share), not a weighted average.
+- 2026-11-07: SOC major group names hardcoded in web/lib/soc.ts (SOC 2018); not present in the O*NET tables.
+- 2026-11-07: Filter option lists cached per process for 1 hour (lib/search.ts); reference data only changes on reload.
+- 2026-11-07: No new indexes: every filter subquery hits an existing PK/unique index led by onetsoc_code. Revisit if EXPLAIN shows otherwise.

@@ -72,36 +72,49 @@ export function codePrefix(term: string): string | null {
 type RankedRow = OccupationRow & { total: string };
 
 /**
+ * CTEs "hits" and "best": one row per occupation matching a keyword, with its
+ * rank and why it matched. Uses 4 params starting at $a (see keywordParams).
+ */
+export function keywordBestCte(a: number): string {
+  const [code, term, pat, prefix] = [a, a + 1, a + 2, a + 3].map((n) => `$${n}`);
+  return `hits as (
+       select onetsoc_code, 0 as rank, null::text as matched, 'code' as match_kind
+         from onet.occupation_data where ${code}::text is not null and onetsoc_code like ${code} || '%'
+       union all
+       select onetsoc_code,
+              case when lower(title) = lower(${term}::text) then 1 when title ilike ${prefix} || '%' then 2 else 3 end,
+              null, 'title'
+         from onet.occupation_data where title ilike ${pat}
+       union all
+       select onetsoc_code, case when lower(job_title) = lower(${term}::text) then 4 else 5 end, job_title, 'alt'
+         from onet.job_titles where job_title ilike ${pat}
+       union all
+       select onetsoc_code, 6, reported_job_title, 'alt'
+         from onet.sample_of_reported_titles where reported_job_title ilike ${pat}
+       union all
+       select onetsoc_code, 7, workplace_example, 'tech'
+         from onet.software_skills where workplace_example ilike ${pat}
+     ),
+     best as (
+       select distinct on (onetsoc_code) onetsoc_code, rank, matched, match_kind
+         from hits order by onetsoc_code, rank, length(matched)
+     )`;
+}
+
+/** The 4 params keywordBestCte expects, in order. */
+export function keywordParams(term: string): unknown[] {
+  const code = codePrefix(term);
+  return [code ? likeEscape(code) : null, term, `%${likeEscape(term)}%`, likeEscape(term)];
+}
+
+/**
  * Search by SOC code prefix, title, alternate job titles, reported titles and
  * technology names. Ranked: code, exact title, title prefix, title contains,
  * alternate title, reported title, technology; then by title.
  */
 export async function searchOccupations(term: string, page: number): Promise<Paged<OccupationRow>> {
-  const code = codePrefix(term);
-  const pat = `%${likeEscape(term)}%`;
   const rows = await query<RankedRow>(
-    `with hits as (
-       select onetsoc_code, 0 as rank, null::text as matched, 'code' as match_kind
-         from onet.occupation_data where $1::text is not null and onetsoc_code like $1 || '%'
-       union all
-       select onetsoc_code,
-              case when lower(title) = lower($2::text) then 1 when title ilike $4 || '%' then 2 else 3 end,
-              null, 'title'
-         from onet.occupation_data where title ilike $3
-       union all
-       select onetsoc_code, case when lower(job_title) = lower($2::text) then 4 else 5 end, job_title, 'alt'
-         from onet.job_titles where job_title ilike $3
-       union all
-       select onetsoc_code, 6, reported_job_title, 'alt'
-         from onet.sample_of_reported_titles where reported_job_title ilike $3
-       union all
-       select onetsoc_code, 7, workplace_example, 'tech'
-         from onet.software_skills where workplace_example ilike $3
-     ),
-     best as (
-       select distinct on (onetsoc_code) onetsoc_code, rank, matched, match_kind
-         from hits order by onetsoc_code, rank, length(matched)
-     )
+    `with ${keywordBestCte(1)}
      select o.onetsoc_code, o.title, o.description, jz.job_zone, b.matched, b.match_kind,
             count(*) over () as total
        from best b
@@ -109,7 +122,7 @@ export async function searchOccupations(term: string, page: number): Promise<Pag
        left join onet.job_zones jz using (onetsoc_code)
       order by b.rank, o.title
       limit $5 offset $6`,
-    [code ? likeEscape(code) : null, term, pat, likeEscape(term), PAGE_SIZE, (page - 1) * PAGE_SIZE]);
+    [...keywordParams(term), PAGE_SIZE, (page - 1) * PAGE_SIZE]);
   return { rows, total: Number(rows[0]?.total ?? 0) };
 }
 

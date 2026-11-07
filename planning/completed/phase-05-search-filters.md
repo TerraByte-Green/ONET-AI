@@ -1,0 +1,13 @@
+# Phase 05: Search filters
+Goal: Expand /search with filters across occupation, rating, education, work context and technology data, with sort, chips and CSV export, all state in the URL.
+## Stories
+- [x] S1: Filter state model in web/lib (parse/serialize every filter to URL params, validate against reference tables, cap counts) | Done when: a typed SearchFilters object round-trips through the URL and invalid params are dropped.
+- [x] S2: Query builder: refactor searchOccupations to accept optional keyword + filters, all parameterized | Done when: keyword-only search returns the same results as today, and an empty keyword with filters returns filtered occupations.
+- [x] S3: Core filters: job zone (multi), career interest (top interest or minimum OI score), SOC major group (code prefix), has emerging tasks | Done when: each filter narrows results correctly and combines with the others (AND).
+- [x] S4: Rating thresholds: choose an element from skills, abilities, knowledge or work activities and set minimum importance and/or level (up to 3 rows) | Done when: results only include occupations meeting every threshold.
+- [x] S5: Education and training: required education level, related work experience, on-the-job training (by most common category) | Done when: filters use the category tables and narrow results correctly.
+- [x] S6: Work context, work styles and technology: work context item minimum, work style minimum, software/technology name, hot technology and in-demand flags | Done when: each filter narrows results correctly; queries on work_context stay under an acceptable time (check with EXPLAIN, add indexes by migration if needed).
+- [x] S7: Filter panel UI: grouped, collapsible sections on /search using brand primitives, works without JS (GET form), mobile layout | Done when: every filter is settable from the page, follows ref/BRANDGUIDE.md and web/DESIGN.md, and passes keyboard and screen reader checks.
+- [x] S8: Results behavior: allow filter-only search (q optional), sort (relevance, title, job zone, chosen rating score), active filter chips with remove links and "clear all", Pager keeps all params | Done when: each chip removes only its filter, sort persists across pages, empty state explains which filters to loosen.
+- [x] S9: CSV export of filtered results with DownloadCsv and a row cap | Done when: the CSV matches the on-screen result set (all pages, up to the cap).
+- [x] S10: Docs and handoff: update README search section and widget deep-link notes (web/lib/url.ts) | Done when: README lists every filter param and the AI widget can link to a filtered search URL.

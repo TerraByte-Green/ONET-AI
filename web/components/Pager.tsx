@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { hrefWith } from "@/lib/url";
+import { type HrefParams, hrefWith } from "@/lib/url";
 
 const fmt = new Intl.NumberFormat("en-US");
 
 /** "Showing 51 to 100 of 340" plus previous / next links that keep the other params. */
 export function Pager({ path, params, page, pageSize, total, noun }: {
   path: string;
-  params: Record<string, string | number | undefined>;
+  params: HrefParams;
   page: number;
   pageSize: number;
   total: number;

@@ -61,6 +61,32 @@ npm run build && npm run lint && npm run check:colors
 - `/styleguide`: brand primitives, development only (404 in production).
 - `npm run check:colors`: fails if a hex color appears outside `web/app/tokens.css`.
 
+**Search (`/search`):** keyword and filters can be used together or alone. Every filter is a URL
+param, so a search can be shared or linked to (the AI widget uses the same URLs). All filters must
+match. `/search/csv` takes the same params and returns every matching job as CSV.
+
+| Param | Filter |
+|---|---|
+| `q` | Keyword: title, other job title, technology, or O*NET-SOC code |
+| `zone` (repeat) | Job zone number |
+| `group` (repeat) | SOC major group, 2 digits (`15` = Computer and Mathematical) |
+| `interest` (repeat) | Strongest career interest, element id `1.B.1.a` to `1.B.1.f` |
+| `int`, `int_min` | Career interest element id and minimum OI score (1 to 7) |
+| `emerging=1` | Has emerging tasks |
+| `r1`..`r3`, `rN_im`, `rN_lv` | `<domain>:<element id>` with minimum importance (1 to 5) and/or level (0 to 7). Domains: `essential-skills`, `transferable-skills`, `knowledge`, `abilities`, `work-activities` |
+| `edu_min`, `edu_max` | Most common required education category (1 to 12) |
+| `exp_min`, `exp_max` | Most common related work experience category (1 to 11) |
+| `ojt_min`, `ojt_max` | Most common on-the-job training category (1 to 9) |
+| `wc1`, `wc1_min`, `wc2`, `wc2_min` | Work context element id and minimum mean (1 to 5) |
+| `ws1`, `ws1_min`, `ws2`, `ws2_min` | Work style element id and minimum impact (-3 to 3) |
+| `tech` | Technology name contains |
+| `hot=1`, `demand=1` | Uses a hot / in-demand technology (combined with `tech` when both are set) |
+| `sort` | `relevance` (needs `q`), `title`, `zone`, `zone-desc`, `score` (by `r1`) |
+| `page` | Page number |
+
+Example: `/search?zone=4&r1=knowledge:2.C.3.a&r1_im=4&sort=score`. Invalid values are dropped.
+Parsing and validation: `web/lib/search-filters.ts`. Query: `web/lib/search.ts`.
+
 Environment variables:
 
 | Name | Required | Purpose |

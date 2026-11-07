@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PixelLabel } from "./brand";
+import { PixelLabel, ScorePins } from "./brand";
 import type { OccupationRow } from "@/lib/onet";
 import { zonePixel } from "@/lib/zones";
 
@@ -12,8 +12,14 @@ function blurb(text: string, max = 180): string {
 
 const MATCH_PREFIX = { alt: "Also called", tech: "Uses" } as const;
 
+/** Optional score per row (search with a rating filter), shown as pins. */
+export type RowScore = { name: string; scale: "importance" | "level" };
+
 /** Occupations as a ruled list (no card grid): title, code, zone, short description. */
-export function OccupationList({ rows }: { rows: OccupationRow[] }) {
+export function OccupationList({ rows, score }: {
+  rows: (OccupationRow & { score?: number | null })[];
+  score?: RowScore | null;
+}) {
   return (
     <ol className="divide-y divide-earth border-y border-earth">
       {rows.map((o) => (
@@ -31,6 +37,12 @@ export function OccupationList({ rows }: { rows: OccupationRow[] }) {
             <p className="mt-1 text-sm">
               {MATCH_PREFIX[o.match_kind]}: <mark className="tbg-highlight bg-transparent text-earth">{o.matched}</mark>
             </p>
+          ) : null}
+          {score && o.score !== null && o.score !== undefined ? (
+            <div className="mt-2">
+              <p className="text-sm font-medium">{score.name}</p>
+              <ScorePins scale={score.scale} value={o.score} />
+            </div>
           ) : null}
           <p className="tbg-prose mt-1">{blurb(o.description)}</p>
         </li>
